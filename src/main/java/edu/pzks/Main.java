@@ -1,23 +1,42 @@
 package edu.pzks;
 
+import java.util.HashMap;
+import java.util.Map;
 
-/*
-  @author   george
-  @project   Default (Template) Project
-  @class  ${NAME}
-  @version  1.0.0 
-  @since 10.03.25 - 13.52
-*/
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
+public class RomanToInteger {
     public static void main(String[] args) {
+        String input1 = "XXVII"; // 27
+        String input2 = "MCMXCIV"; // 1994 (M=1000, CM=900, XC=90, IV=4)
+        System.out.println(input1 + " = " + romanToInt(input1));
+        System.out.println(input2 + " = " + romanToInt(input2));
+    }
 
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-int number = 6;
-        System.out.println(Converter.convertToRoman(number));
+    public static int romanToInt(String s) {
 
+        Map<Character, Integer> romanValues = new HashMap<>();
+        romanValues.put('I', 1);
+        romanValues.put('V', 5);
+        romanValues.put('X', 10);
+        romanValues.put('L', 50);
+        romanValues.put('C', 100);
+        romanValues.put('D', 500);
+        romanValues.put('M', 1000);
+
+        int result = 0;
+        int n = s.length();
+
+        for (int i = 0; i < n; i++) {
+            int currentValue = romanValues.get(s.charAt(i));
+
+            // віднімання: якщо поточне число менше за наступне
+            if (i < n - 1 && currentValue < romanValues.get(s.charAt(i + 1))) {
+                result -= currentValue;
+            } else {
+                // додавання: зліва направо від найбільшого до найменшого
+                result += currentValue;
+            }
+        }
+
+        return result;
     }
 }
