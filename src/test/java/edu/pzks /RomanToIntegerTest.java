@@ -42,8 +42,8 @@ public class RomanToIntegerTest {
     @Test
     void testComplexNumbers() {
         // 19-25: Складні комбінації
-        assertEquals(27, RomanToInteger.romanToInt("XXVII")); // З вашого прикладу
-        assertEquals(12, RomanToInteger.romanToInt("XII"));   // З вашого прикладу
+        assertEquals(27, RomanToInteger.romanToInt("XXVII"));
+        assertEquals(12, RomanToInteger.romanToInt("XII")); 
         assertEquals(58, RomanToInteger.romanToInt("LVIII"));
         assertEquals(1994, RomanToInteger.romanToInt("MCMXCIV"));
         assertEquals(3999, RomanToInteger.romanToInt("MMMCMXCIX"));
