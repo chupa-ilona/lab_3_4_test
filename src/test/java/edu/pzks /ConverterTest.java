@@ -7,6 +7,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+  @author   george
+  @project   lab_3_4_test
+  @class  ConverterTest
+  @version  1.0.0 
+  @since 10.03.25 - 14.05
+*/
+
 public class ConverterTest {
 
     @BeforeEach
@@ -32,6 +40,16 @@ public class ConverterTest {
     }
 
     @Test
+    void romanToArabic_shouldConvertI() {
+        assertEquals(1, Converter.romanToArabic("I"));
+    }
+
+    @Test
+    void romanToArabic_shouldConvertX() {
+        assertEquals(10, Converter.romanToArabic("X"));
+    }
+
+    @Test
     void arabicToRoman_shouldThrowExceptionForZero() {
         assertThrows(IllegalArgumentException.class, () -> {
             Converter.arabicToRoman(0);
@@ -43,16 +61,6 @@ public class ConverterTest {
         assertThrows(IllegalArgumentException.class, () -> {
             Converter.arabicToRoman(4001);
         });
-    }
-
-    @Test
-    void romanToArabic_shouldConvertI() {
-        assertEquals(1, Converter.romanToArabic("I"));
-    }
-
-    @Test
-    void romanToArabic_shouldConvertX() {
-        assertEquals(10, Converter.romanToArabic("X"));
     }
 
     @Test
@@ -95,5 +103,36 @@ public class ConverterTest {
         assertThrows(IllegalArgumentException.class,
                 () -> Converter.romanToArabic("VV"));
     }
+
+
+    @Test
+    void arabicToRoman_shouldThrowExceptionForNegativeNumber() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Converter.arabicToRoman(-5);
+        });
+    }
+    
+
+    @Test
+    void romanToArabic_shouldThrowExceptionForNull() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Converter.romanToArabic(null);
+        });
+    }
+
+    @Test
+    void romanToArabic_shouldThrowExceptionForEmptyString() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Converter.romanToArabic("");
+        });
+    }
+
+    @Test
+    void romanToArabic_shouldThrowExceptionForTooManyRepeats() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Converter.romanToArabic("IIIIIIII");
+        });
+    }
+
 }
 
